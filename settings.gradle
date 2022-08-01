@@ -1,0 +1,49 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven {
+            credentials {
+                username '62e68c1790b1cc6354d650ec'
+                password 'sq2LSJol8zMK'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2260060-release-7IuIaX/'
+        }
+        maven {
+            credentials {
+                username '62e68c1790b1cc6354d650ec'
+                password 'sq2LSJol8zMK'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2260060-snapshot-Wn26Ci/'
+        }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven {
+            credentials {
+                username '62e68c1790b1cc6354d650ec'
+                password 'sq2LSJol8zMK'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2260060-release-7IuIaX/'
+        }
+        maven {
+            credentials {
+                username '62e68c1790b1cc6354d650ec'
+                password 'sq2LSJol8zMK'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2260060-snapshot-Wn26Ci/'
+        }
+    }
+}
+rootProject.name = "CommonView"
+include ':app'
+include ':CommonView'
