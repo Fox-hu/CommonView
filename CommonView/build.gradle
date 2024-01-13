@@ -62,7 +62,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api 'com.fox.framework:commonbase:0.0.1'
+    api 'com.fox.framework:commonbase:0.0.3'
     api 'com.google.android.material:material:1.4.0'
     api "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-rc01"
     api 'de.hdodenhof:circleimageview:2.2.0'
