@@ -1,4 +1,4 @@
-package com.silver.fox.viewadapter;
+package com.fox.commonview.custom.viewadapter;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
