@@ -20,6 +20,8 @@
         </activity>
 
         <activity android:name=".touch.TouchDemoActivity"/>
+        <activity android:name=".animator.DefaultLayoutTransitionActivity"/>
+        <activity android:name=".animator.CustomLayoutTransitionActivity"/>
     </application>
 
 </manifest>
