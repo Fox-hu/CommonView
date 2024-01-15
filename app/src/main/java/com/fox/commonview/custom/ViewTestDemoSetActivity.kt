@@ -1,6 +1,7 @@
 package com.fox.commonview.custom
 
 import com.fox.commonbase.base.BaseListActivity
+import com.fox.commonview.animator.ViewGroupTransitionActivity
 
 
 class ViewTestDemoSetActivity : BaseListActivity() {
@@ -15,7 +16,6 @@ class ViewTestDemoSetActivity : BaseListActivity() {
         activityMap["PaintCanvasActivity"] = PaintCanvasActivity::class.java
         activityMap["ShapeActivity"] = ShapeActivity::class.java
         activityMap["ScrollActivity"] = ScrollActivity::class.java
-        activityMap["ViewGroupTransition"] = ViewGroupTransitionActivity::class.java
         activityMap["CoordinatorLayoutActivity"] = CoordinatorLayoutActivity::class.java
     }
 }

@@ -1,4 +1,4 @@
-package com.fox.commonview.custom
+package com.fox.commonview.animator
 
 import android.animation.LayoutTransition
 import android.animation.ObjectAnimator

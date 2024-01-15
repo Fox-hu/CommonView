@@ -20,8 +20,6 @@
         </activity>
 
         <activity android:name=".touch.TouchDemoActivity"/>
-        <activity android:name=".animator.DefaultLayoutTransitionActivity"/>
-        <activity android:name=".animator.CustomLayoutTransitionActivity"/>
         <activity android:name=".custom.SplashActivity" />
         <activity android:name=".custom.LoveActivity" />
         <activity android:name=".custom.BubbleActivity" />
@@ -32,7 +30,7 @@
         <activity android:name=".custom.PaintCanvasActivity" />
         <activity android:name=".custom.ShapeActivity" />
         <activity android:name=".custom.ScrollActivity" />
-        <activity android:name=".custom.ViewGroupTransitionActivity" />
+        <activity android:name=".animator.ViewGroupTransitionActivity" />
         <activity android:name=".custom.CoordinatorLayoutActivity" />
     </application>
 
