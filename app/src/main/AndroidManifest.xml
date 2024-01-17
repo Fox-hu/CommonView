@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fox.commonview">
+    package="com.fox.commonview" >
 
     <application
         android:allowBackup="true"
@@ -8,18 +8,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CommonView">
+        android:theme="@style/Theme.CommonView" >
+        <activity
+            android:name=".practice.WrapContentCustomViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".practice.PracticeListActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
+            android:exported="true" >
+            <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".touch.TouchDemoActivity"/>
+            </intent-filter >
+        </activity >
+        <activity android:name=".touch.TouchDemoActivity" />
         <activity android:name=".custom.SplashActivity" />
         <activity android:name=".custom.LoveActivity" />
         <activity android:name=".custom.BubbleActivity" />
@@ -32,6 +37,6 @@
         <activity android:name=".custom.ScrollActivity" />
         <activity android:name=".animator.ViewGroupTransitionActivity" />
         <activity android:name=".custom.CoordinatorLayoutActivity" />
-    </application>
+    </application >
 
-</manifest>
+</manifest >
