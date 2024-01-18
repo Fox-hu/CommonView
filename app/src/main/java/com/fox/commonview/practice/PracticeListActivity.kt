@@ -12,5 +12,6 @@ import com.fox.commonview.touch.TouchDemoActivity
 class PracticeListActivity : BaseListActivity() {
     override fun initItem() {
         activityMap["WrapContentCustomView"] = WrapContentCustomViewActivity::class.java
+        activityMap["VerticalViewGroup"] = CustomDemoViewGroupActivity::class.java
     }
 }

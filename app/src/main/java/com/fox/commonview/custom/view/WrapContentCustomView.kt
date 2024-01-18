@@ -11,6 +11,9 @@ import com.fox.commonview.R
 /**
  * @Author fox
  * @Date 2024/1/17 23:34
+ * 自定义继承自view的一般步骤
+ * 1.重写View的onMeasure方法，并实现对wrap_content的处理
+ * 2.重写View的onDraw方法，实现绘制
  */
 class WrapContentCustomView
 @JvmOverloads constructor(
