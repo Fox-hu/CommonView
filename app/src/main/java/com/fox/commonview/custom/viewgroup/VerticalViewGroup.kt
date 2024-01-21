@@ -8,7 +8,7 @@ import kotlin.math.max
 /**
  * @Author fox
  * @Date 2024/1/18 23:18
- * 1.因onMeasure的onMeasure方法 实际是View的onMeasure方法 只会测量自己 并不会测量子控件
+ * 1.因ViewGroup的onMeasure方法 实际是View的onMeasure方法 只会测量自己 并不会测量子控件
  *   所以我们需要重写onMeasure方法 并处理wrap_content的情况
  * 2.因为我们的自定义ViewGroup是一个容器 所以我们需要重写onLayout方法 并在其中对子控件进行布局
  */
@@ -61,5 +61,4 @@ class VerticalViewGroup @JvmOverloads constructor(
             }
         }
     }
-
 }

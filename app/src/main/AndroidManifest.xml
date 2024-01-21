@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CommonView" >
         <activity
+            android:name=".practice.DirectionDemoActivity"
+            android:exported="false" />
+        <activity
             android:name=".practice.CustomDemoViewGroupActivity"
             android:exported="false" />
         <activity
