@@ -14,5 +14,6 @@ class PracticeListActivity : BaseListActivity() {
         activityMap["WrapContentCustomView"] = WrapContentCustomViewActivity::class.java
         activityMap["VerticalViewGroup"] = CustomDemoViewGroupActivity::class.java
         activityMap["DirectionDemo"] = DirectionDemoActivity::class.java
+        activityMap["ScrollerDemo"] = ScrollerDemoActivity::class.java
     }
 }
