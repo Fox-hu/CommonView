@@ -9,7 +9,7 @@ import com.fox.commonview.R
 
 /**
  * @Author fox.hu
- * @Date 2021/1/20 17:23
+ * @Date 2024/1/22 22:23
  * 一个自定义的ToggleButton 用于展示scroller的使用
  * 1. 初始化一个scroller
  * 2. 调用scroller.startScroll()方法
@@ -19,13 +19,12 @@ class CustomToggleButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ViewGroup(context, attrs, defStyleAttr) {
 
-    private val scroller: Scroller
+    private val scroller: Scroller = Scroller(context)
     private var isOpen = false
     private var slideWidth = 0
     private var scrollerWidth = 0
 
     init {
-        scroller = Scroller(context)
         setBackgroundResource(R.drawable.background)
 
         val slide = ImageView(context)
@@ -41,9 +40,7 @@ class CustomToggleButton @JvmOverloads constructor(
             isOpen = !isOpen
             invalidate()
         }
-
         addView(slide)
-
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -60,7 +57,7 @@ class CustomToggleButton @JvmOverloads constructor(
     }
 
     //一定要重写这个方法 不然滑动不了
-    //scrollTo的是scroller计算出当前的值
+    //需要在这个方法中实际调用scrollTo方法 进行滑动 滑动的参数就是scroller计算出来的值
     override fun computeScroll() {
         super.computeScroll()
         if(scroller.computeScrollOffset()) {

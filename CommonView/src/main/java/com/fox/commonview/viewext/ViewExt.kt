@@ -24,6 +24,8 @@ fun View.px2sp(sp: Int) = TypedValue.applyDimension(
     resources.displayMetrics
 ).toInt()
 
+fun View.dp2px(dp: Int) = dp2px(dp.toFloat(), context)
+
 fun dp2px(dpValue: Float, context: Context = Ktx.app): Int {
     val scale = context.resources.displayMetrics.density
     return (dpValue * scale + 0.5).toInt()

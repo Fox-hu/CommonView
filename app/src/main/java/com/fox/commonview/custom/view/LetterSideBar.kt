@@ -31,7 +31,6 @@ class LetterSideBar @JvmOverloads constructor(
             invalidate()
         }
 
-    private val LETTERS = arrayOf<String>("A", "B", "C", "D", "E")
 
     init {
         val array =
@@ -41,6 +40,7 @@ class LetterSideBar @JvmOverloads constructor(
                 getColor(R.styleable.view_LetterSideBar_view_textColor, textColor)
             textSize =
                 getDimensionPixelSize(R.styleable.view_LetterSideBar_view_textSize, px2sp(textSize))
+            recycle()
         }
 
         paint.config(textColor, textSize.toFloat())
@@ -85,9 +85,7 @@ class LetterSideBar @JvmOverloads constructor(
         //计算当前触摸的字母
         event?.apply {
             when (action) {
-                MotionEvent.ACTION_DOWN,
-                MotionEvent.ACTION_MOVE
-                -> {
+                MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
                     currentTouchIndex = (y / itemHeight).toInt()
                 }
                 else -> {
@@ -95,6 +93,10 @@ class LetterSideBar @JvmOverloads constructor(
             }
         }
         return true
+    }
+
+    companion object {
+        val LETTERS = arrayOf<String>("A", "B", "C", "D", "E")
     }
 
 }

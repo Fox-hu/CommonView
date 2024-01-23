@@ -12,17 +12,20 @@ import com.fox.commonview.viewext.config
 import com.fox.commonview.viewext.px2sp
 
 
+/**
+ * 自定义写一个TextView
+ */
 class CustomTextView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) :
-    View(context, attrs, defStyleAttr) {
+) : View(context, attrs, defStyleAttr) {
+
+    private val paint = Paint()
 
     var text: String = ""
     var textSize = 15
     var textColor = Color.BLACK
-    var paint = Paint()
 
     init {
         val arr =
@@ -49,6 +52,7 @@ class CustomTextView @JvmOverloads constructor(
         var width = MeasureSpec.getSize(widthMeasureSpec)
         var height = MeasureSpec.getSize(heightMeasureSpec)
 
+        //处理宽高为wrap_content的情况 加上padding
         if (widthMode == MeasureSpec.AT_MOST) {
             val bounds = Rect()
             paint.getTextBounds(text, 0, text.length, bounds)

@@ -8,9 +8,11 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import com.fox.commonview.R
+import java.lang.Integer.max
+import java.lang.Integer.min
 
 /**
- * 仿android的ratingbar
+ * 仿豆瓣的ratingbar
  * @Author fox
  * @Date 2020/3/2 12:49
  */
@@ -20,8 +22,13 @@ class RatingBar @JvmOverloads constructor(
 
     private var gradeNum = 5
     private var currentGrade = 0
-    private var starNormalBM: Bitmap
-    private var starFocusBM: Bitmap
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    private val starNormalBM: Bitmap
+    private val starFocusBM: Bitmap
 
     init {
         val array =
@@ -64,21 +71,20 @@ class RatingBar @JvmOverloads constructor(
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         event?.apply {
             //移动、抬起、按下的处理逻辑都一样，判断手指位置，根据当前位置计算出分数
-            //up事件不处理 减少ondraw调用
+            //up事件不处理 减少onDraw调用
             when (action) {
                 MotionEvent.ACTION_DOWN,
                 MotionEvent.ACTION_MOVE -> {
                     val currentX = x
                     var currentNum = (currentX / starNormalBM.width + 1).toInt()
-                    //1 处理范围问题
-                    currentNum = Math.max(0, currentNum)
-                    currentNum = Math.min(currentNum, gradeNum)
-                    //2 分数相同不绘制 减少ondraw调用
+                    //1 处理范围问题 有效值为min(max(0, currentNum), gradeNum)
+                    currentNum = min(max(0, currentNum), gradeNum)
+                    //2 分数相同不绘制 减少onDraw调用
                     if (currentNum != currentGrade) {
                         currentGrade = currentNum
-                        invalidate()
                     }
                 }
+
                 else -> {
                 }
             }

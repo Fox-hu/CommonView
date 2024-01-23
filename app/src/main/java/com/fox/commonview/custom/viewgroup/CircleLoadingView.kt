@@ -17,6 +17,7 @@ import com.fox.commonview.viewext.dp2px
 /**
  * @Author fox
  * @Date 2020/5/1 13:12
+ * 三个圆形的加载动画
  */
 class CircleLoadingView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0

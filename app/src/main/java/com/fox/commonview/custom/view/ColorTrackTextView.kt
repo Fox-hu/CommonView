@@ -1,5 +1,6 @@
 package com.fox.commonview.custom.view
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -9,6 +10,7 @@ import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import com.fox.commonview.R
 import com.fox.commonview.viewext.config
+import kotlinx.android.synthetic.main.view_activity_test.colorTrackTextView
 
 /**
  * 颜色可以变色的TextView
@@ -51,6 +53,16 @@ class ColorTrackTextView
 
         originPaint.config(originColor, textSize)
         changePaint.config(changeColor, textSize)
+    }
+
+    fun sideToSide(direction: Direction) {
+        this.direction = direction
+        val animator = ObjectAnimator.ofFloat(0f, 1f)
+        animator.duration = 2000
+        animator.addUpdateListener {
+            currentProgress = it.animatedValue as Float
+        }
+        animator.start()
     }
 
     //一个文字两种颜色

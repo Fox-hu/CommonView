@@ -18,7 +18,7 @@ class ShapeView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-    private var paint = Paint()
+    private val paint = Paint()
     private var currentShape = Shape.Circle
 
     private var path: Path = Path()

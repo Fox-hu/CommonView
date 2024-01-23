@@ -23,7 +23,6 @@ import kotlinx.android.synthetic.main.view_loading.view.shape_view
 class LoadingView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
-    private val ANIMATOR_DURATION: Long = 300
     private var isStop = false
 
     init {
@@ -31,7 +30,7 @@ class LoadingView @JvmOverloads constructor(
 //        addView(view)
         //等价于
         inflate(context, R.layout.view_loading, this)
-        //在post中 就是rusume中开始进行动画 如果不在post中就是oncreate
+        //在post中 就是onResume中开始进行动画 如果不在post中就是onCreate
         post {
             startFallAnimator()
         }
@@ -41,7 +40,7 @@ class LoadingView @JvmOverloads constructor(
         if (isStop) {
             return
         }
-        "startFallAnimator".logi("LoadingView")
+        "startFallAnimator".logi(TAG)
         val shapeFallAnimator =
             ObjectAnimator.ofFloat(shape_view, "translationY", 0f, dp2px(80f).toFloat())
                 .apply {
@@ -62,7 +61,6 @@ class LoadingView @JvmOverloads constructor(
         AnimatorSet().apply {
             playTogether(shapeFallAnimator, shapeRotationAnimator, shadowAnimator)
             doOnEnd {
-
                 //下落后上抛
                 shape_view.exchange()
                 //改变形状
@@ -76,7 +74,7 @@ class LoadingView @JvmOverloads constructor(
         if (isStop) {
             return
         }
-        "startUpAnimator".logi("LoadingView")
+        "startUpAnimator".logi(TAG)
         val shapeUpAnimator =
             ObjectAnimator.ofFloat(shape_view, "translationY", dp2px(80f).toFloat(), 0f)
                 .apply {
@@ -105,6 +103,10 @@ class LoadingView @JvmOverloads constructor(
         isStop = true
     }
 
+    /**
+     * 即使不可见 动画仍然在继续
+     * 所以需要在不可见时停止动画
+     */
     override fun setVisibility(visibility: Int) {
         super.setVisibility(visibility)
         if (visibility == View.GONE || visibility == View.INVISIBLE) {
@@ -147,5 +149,10 @@ class LoadingView @JvmOverloads constructor(
         val set = AnimatorSet()
         set.playTogether(shapeAnimator, shadowAnimator)
         set.start()
+    }
+
+    companion object{
+        const val TAG = "LoadingView"
+        const val ANIMATOR_DURATION: Long = 300
     }
 }

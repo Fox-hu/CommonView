@@ -26,21 +26,11 @@ class SimpleViewTestActivity : AppCompatActivity() {
     }
 
     fun leftToRight(view: View) {
-        sideToSide(ColorTrackTextView.Direction.LEFT_TO_RIGHT)
+        colorTrackTextView.sideToSide(ColorTrackTextView.Direction.LEFT_TO_RIGHT)
     }
 
     fun rightToLeft(view: View) {
-        sideToSide(ColorTrackTextView.Direction.RIGHT_TO_LEFT)
-    }
-
-    private fun sideToSide(direction: ColorTrackTextView.Direction) {
-        colorTrackTextView.direction = direction
-        val animator = ObjectAnimator.ofFloat(0f, 1f)
-        animator.duration = 2000
-        animator.addUpdateListener {
-            colorTrackTextView.currentProgress = it.animatedValue as Float
-        }
-        animator.start()
+        colorTrackTextView.sideToSide(ColorTrackTextView.Direction.RIGHT_TO_LEFT)
     }
 
     fun exchange(view: View) {

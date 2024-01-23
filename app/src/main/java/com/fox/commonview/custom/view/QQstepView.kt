@@ -17,12 +17,11 @@ class QQstepView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) :
-    View(context, attrs, defStyleAttr) {
+) : View(context, attrs, defStyleAttr) {
 
-    private var outPaint = Paint()
-    private var innerPaint = Paint()
-    private var textPaint = Paint()
+    private val outPaint = Paint()
+    private val innerPaint = Paint()
+    private val textPaint = Paint()
     private var outColor = Color.RED
     private var innerColor = Color.BLUE
     private var borderWidth = 8
@@ -36,8 +35,7 @@ class QQstepView @JvmOverloads constructor(
         }
 
     init {
-        val arrays =
-            context.obtainStyledAttributes(attrs, R.styleable.view_QQstepView)
+        val arrays = context.obtainStyledAttributes(attrs, R.styleable.view_QQstepView)
         arrays.apply {
             outColor = getColor(R.styleable.view_QQstepView_view_outerColor, outColor)
             innerColor = getColor(R.styleable.view_QQstepView_view_innerColor, innerColor)
