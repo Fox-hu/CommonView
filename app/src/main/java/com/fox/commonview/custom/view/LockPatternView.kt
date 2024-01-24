@@ -88,6 +88,7 @@ class LockPatternView @JvmOverloads constructor(
                             normalPaint
                         )
                     }
+
                     Point.STATUS.STATUS_PRESSED -> {
                         pressedPaint.color = outerPressedColor
                         canvas.drawCircle(
@@ -104,6 +105,7 @@ class LockPatternView @JvmOverloads constructor(
                             pressedPaint
                         )
                     }
+
                     Point.STATUS.STATUS_ERROR -> {
                         errorPaint.color = outerErrorColor
                         canvas.drawCircle(
@@ -161,6 +163,7 @@ class LockPatternView @JvmOverloads constructor(
 
         val dx = end.centerX - start.centerX
         val dy = end.centerY - start.centerY
+        // 根据三角函数 算出去除内圆半径后的起始点的x,y坐标
         val rx = ((dx * (dotRadius / 6)) / distance).toFloat()
         val ry = ((dy * (dotRadius / 6)) / distance).toFloat()
         canvas.drawLine(
@@ -175,6 +178,8 @@ class LockPatternView @JvmOverloads constructor(
     private var isTouchPoint = false
     private var selectPoints = ArrayList<Point>()
 
+    //标记手指触摸到的point
+    //在onDraw进行绘制
     override fun onTouchEvent(event: MotionEvent): Boolean {
         currentX = event.x
         currentY = event.y
@@ -182,7 +187,7 @@ class LockPatternView @JvmOverloads constructor(
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 //判断手指是不是按在一个宫格上面
-                val point = point
+                val point = getInRoundPoint(currentX, currentY, dotRadius)
                 point?.run {
                     isTouchPoint = true
                     selectPoints.plusAssign(this)
@@ -193,7 +198,7 @@ class LockPatternView @JvmOverloads constructor(
             MotionEvent.ACTION_MOVE -> {
                 if (isTouchPoint) {
                     //只有按下时在点上 才能响应move事件
-                    val point = point
+                    val point = getInRoundPoint(currentX, currentY, dotRadius)
                     point?.let {
                         if (!selectPoints.contains(it)) {
                             selectPoints.plusAssign(it)
@@ -257,6 +262,7 @@ class LockPatternView @JvmOverloads constructor(
 
         //单元格宽度
         val squareWidth = width / 3
+        //将图形垂直居中 所需要的偏移量
         val offsetY = (height - width) / 2
 
         dotRadius = (width / 12).toFloat()
@@ -280,22 +286,25 @@ class LockPatternView @JvmOverloads constructor(
         var status = STATUS.STATUS_NORMAL
     }
 
-    private val point: Point?
-        get() {
-            for (i in 0..2) {
-                for (point in points[i]) {
-                    if (checkInRound(
-                            point.centerX.toFloat(),
-                            point.centerY.toFloat(),
-                            currentX,
-                            currentY,
-                            dotRadius
-                        )
-                    ) {
-                        return point
-                    }
+    private fun getInRoundPoint(
+        currentX: Float,
+        currentY: Float,
+        radius: Float
+    ): Point? {
+        points.forEach { array ->
+            array.forEach { point ->
+                if (checkInRound(
+                        point.centerX.toFloat(),
+                        point.centerY.toFloat(),
+                        currentX,
+                        currentY,
+                        radius
+                    )
+                ) {
+                    return point
                 }
             }
-            return null
         }
+        return null
+    }
 }

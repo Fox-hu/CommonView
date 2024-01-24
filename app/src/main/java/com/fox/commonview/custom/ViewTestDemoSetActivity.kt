@@ -1,7 +1,6 @@
 package com.fox.commonview.custom
 
 import com.fox.commonbase.base.BaseListActivity
-import com.fox.commonview.animator.ViewGroupTransitionActivity
 
 
 class ViewTestDemoSetActivity : BaseListActivity() {
