@@ -27,7 +27,7 @@ class SplashView @JvmOverloads constructor(
         fun onDraw(canvas: Canvas)
     }
 
-    var finishListener :(Unit)-> Unit = {
+    var finishListener: (Unit) -> Unit = {
 
     }
 
@@ -75,39 +75,41 @@ class SplashView @JvmOverloads constructor(
             if (state == null) {
                 state = RotationState()
             }
-            state!!.onDraw(canvas)
+            state?.onDraw(canvas)
         }
     }
 
     fun disappear() {
         if (state is RotationState) {
-            (state as RotationState).animator?.cancel()
+            (state as RotationState).rotationAnimator?.cancel()
         }
         state = MergeState()
     }
 
     inner class RotationState : LoadingState {
-        var animator: ValueAnimator? = null
-
+        var rotationAnimator: ValueAnimator? = null
 
         init {
-            if (animator == null) {
-                animator = ObjectAnimator.ofFloat(0f, (Math.PI * 2).toFloat()).apply {
+            if (rotationAnimator == null) {
+                rotationAnimator = ObjectAnimator.ofFloat(0f, (Math.PI * 2).toFloat()).apply {
                     duration = 3000
                     addUpdateListener {
                         currentRotationAngle = it.animatedValue as Float
                         invalidate()
                     }
-                    repeatCount = -1
+                    doOnEnd {
+                        state = MergeState()
+                    }
                 }
-                animator?.start()
+                rotationAnimator?.start()
             }
         }
 
         override fun onDraw(canvas: Canvas) {
+            //根据当前旋转角度绘制6个小圆 每个圆间隔 360/6 = 60 度
             val percentAngle = Math.PI * 2 / circleColors.size
-            circleColors.forEachIndexed { index, i ->
-                paint.color = i
+            circleColors.forEachIndexed { index, color ->
+                paint.color = color
                 val currentAngle = index * percentAngle + currentRotationAngle
                 val cx = centerX + rotationRadius * cos(currentAngle)
                 val cy = centerY + rotationRadius * sin(currentAngle)
@@ -117,12 +119,12 @@ class SplashView @JvmOverloads constructor(
     }
 
     inner class MergeState : LoadingState {
-        var animator: ValueAnimator? = null
+        var mergeAnimator: ValueAnimator? = null
         private var currentRadius: Float = 0f
 
         init {
-            if (animator == null) {
-                animator = ObjectAnimator.ofFloat(rotationRadius, 0f).apply {
+            if (mergeAnimator == null) {
+                mergeAnimator = ObjectAnimator.ofFloat(rotationRadius, 0f).apply {
                     duration = 1500
                     addUpdateListener {
                         currentRadius = it.animatedValue as Float
@@ -133,7 +135,7 @@ class SplashView @JvmOverloads constructor(
                     }
                     interpolator = AnticipateInterpolator(3f)
                 }
-                animator?.start()
+                mergeAnimator?.start()
             }
         }
 
@@ -150,12 +152,12 @@ class SplashView @JvmOverloads constructor(
     }
 
     inner class ExpandState : LoadingState {
-        var animator: ValueAnimator? = null
+        var expandAnimator: ValueAnimator? = null
         private var holeRadius: Float = 0f
 
         init {
-            if (animator == null) {
-                animator = ObjectAnimator.ofFloat(0f, diagonalDist).apply {
+            if (expandAnimator == null) {
+                expandAnimator = ObjectAnimator.ofFloat(0f, diagonalDist).apply {
                     duration = 1500
                     addUpdateListener {
                         holeRadius = it.animatedValue as Float
@@ -165,7 +167,7 @@ class SplashView @JvmOverloads constructor(
                         finishListener(Unit)
                     }
                 }
-                animator?.start()
+                expandAnimator?.start()
             }
         }
 

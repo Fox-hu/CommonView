@@ -15,9 +15,9 @@ class SplashActivity : AppCompatActivity() {
         splash_view.finishListener = {
             tv.visibility = View.VISIBLE
         }
-        Handler().postDelayed({
-            splash_view.disappear()
-        }, 3000)
+//        Handler().postDelayed({
+//            splash_view.disappear()
+//        }, 3000)
     }
 }
 
