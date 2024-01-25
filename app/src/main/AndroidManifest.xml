@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CommonView" >
         <activity
+            android:name=".practice.DragDemoActivity"
+            android:exported="false" />
+        <activity
             android:name=".practice.ScrollerDemoActivity"
             android:exported="false" />
         <activity
@@ -35,6 +38,7 @@
         </activity >
         <activity android:name=".touch.TouchDemoActivity" />
         <activity android:name=".custom.SplashActivity" />
+        <activity android:name=".custom.SlideActivity" />
         <activity android:name=".custom.LoveActivity" />
         <activity android:name=".custom.BubbleActivity" />
         <activity android:name=".custom.ViewTestDemoSetActivity" />

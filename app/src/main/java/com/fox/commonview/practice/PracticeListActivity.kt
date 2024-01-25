@@ -15,5 +15,6 @@ class PracticeListActivity : BaseListActivity() {
         activityMap["VerticalViewGroup"] = CustomDemoViewGroupActivity::class.java
         activityMap["DirectionDemo"] = DirectionDemoActivity::class.java
         activityMap["ScrollerDemo"] = ScrollerDemoActivity::class.java
+        activityMap["DragHelperDemo"] = DragDemoActivity::class.java
     }
 }
