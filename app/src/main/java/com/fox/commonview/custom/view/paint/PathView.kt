@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 
 /**
+ * 用于演示 Paint 画路径的demo(三角形为例子)
  * @Author Fox
  * @Date 2020/12/9 21:01
  */
@@ -16,14 +17,17 @@ class PathView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-    val paint1 by lazy {
+    //填充path区域
+    private val paint1 by lazy {
         Paint().apply {
             color = Color.RED
             strokeWidth = 10f
             style = Paint.Style.FILL
         }
     }
-    val paint2 by lazy {
+
+    //不填充path区域
+    private val paint2 by lazy {
         Paint().apply {
             color = Color.RED
             strokeWidth = 10f
@@ -31,7 +35,7 @@ class PathView @JvmOverloads constructor(
         }
     }
 
-    val path1 = Path().apply {
+    private val path1 = Path().apply {
         //第一条线的起点
         moveTo(100f, 100f)
         //第一条线的终点 第二条线的起点
@@ -42,7 +46,7 @@ class PathView @JvmOverloads constructor(
         close()
     }
 
-    val path2 = Path().apply {
+    private val path2 = Path().apply {
         //第一条线的起点
         moveTo(200f, 100f)
         //第一条线的终点 第二条线的起点

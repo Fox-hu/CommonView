@@ -28,7 +28,7 @@ class VerticalDragListView @JvmOverloads constructor(
     private var currentY: Float = 0f
     private var isMenuOpen: Boolean = false
 
-    //ViewDragHelper这个类是用来帮助我们来操作viewgroup中的子类拖拽事件的
+    //ViewDragHelper这个类是用来帮助我们来操作viewGroup中的子类拖拽事件的
     private val dragHelper: ViewDragHelper by lazy {
         create(this, callback)
     }
@@ -88,10 +88,10 @@ class VerticalDragListView @JvmOverloads constructor(
         if (childCount != 2) {
             throw RuntimeException("2 child view only")
         }
-
-        dragListView = getChildAt(1)
         //这样是拿不到高度的 必须要在测量完成之后才能拿到
         //menuHeight = getChildAt(0).measuredHeight
+
+        dragListView = getChildAt(1)
     }
 
     override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
@@ -118,7 +118,7 @@ class VerticalDragListView @JvmOverloads constructor(
     }
 
     //从swipeRefreshLayout中抄的 判断是否能滚动 不能滚动了则说明到了顶部
-    fun canChildScrollUp(): Boolean {
+    private fun canChildScrollUp(): Boolean {
         return if (dragListView is ListView) {
             ListViewCompat.canScrollList(
                 (dragListView as ListView?)!!,

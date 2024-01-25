@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 
 /**
+ * 用于演示 Paint 画方形的demo
  * @Author fox.hu
  * @Date 2020/12/9 17:23
  */

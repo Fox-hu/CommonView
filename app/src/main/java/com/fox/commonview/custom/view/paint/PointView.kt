@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.View
 
 /**
+ * 用于演示 Paint 画点的demo(方形)
  * @Author fox.hu
  * @Date 2020/12/9 17:14
  */

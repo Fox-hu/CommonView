@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 
 /**
+ * 用于演示 各种Path.FillType的demo 3秒变化一次
  * @Author fox.hu
  * @Date 2020/12/10 13:51
  */
@@ -17,13 +18,32 @@ class PathFillTypeView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     val paint = Paint().apply { color = Color.RED }
+    var fillType = Path.FillType.WINDING
+
+    override fun onFinishInflate() {
+        super.onFinishInflate()
+        periodTask()
+    }
+
+    private fun periodTask() {
+        postDelayed(changeFillType, 3000)
+    }
+
+    private val changeFillType = {
+        Path.FillType.values().forEach {
+            fillType = it
+            invalidate()
+        }
+        periodTask()
+    }
 
     override fun onDraw(canvas: Canvas?) {
         canvas?.drawColor(Color.LTGRAY)
-        drawPath(canvas, Path.FillType.WINDING, 50f, 50f)
-        drawPath(canvas, Path.FillType.INVERSE_WINDING, 50f, 300f)
-        drawPath(canvas, Path.FillType.EVEN_ODD, 450f, 50f)
-        drawPath(canvas, Path.FillType.INVERSE_EVEN_ODD, 450f, 300f)
+//        drawPath(canvas, Path.FillType.WINDING, 50f, 50f)
+//        drawPath(canvas, Path.FillType.INVERSE_WINDING, 50f, 300f)
+//        drawPath(canvas, Path.FillType.EVEN_ODD, 450f, 50f)
+//        drawPath(canvas, Path.FillType.INVERSE_EVEN_ODD, 450f, 300f)
+        drawPath(canvas, fillType, 50f, 50f)
     }
 
     private fun drawPath(canvas: Canvas?, type: Path.FillType, left: Float, top: Float) {

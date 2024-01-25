@@ -6,36 +6,37 @@ import android.util.AttributeSet
 import android.view.View
 
 /**
+ * 用于演示 Paint 画椭圆的demo
  * @Author Fox
  * @Date 2020/12/9 21:27
  */
 class OvalView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-    val ovalPaint = Paint().apply {
+    private val ovalPaint = Paint().apply {
         color = Color.LTGRAY
     }
 
     //弧线画笔
-    val arcPaint1 = Paint().apply {
+    private val arcPaint1 = Paint().apply {
         style = Paint.Style.FILL
         color = Color.GREEN
     }
 
-    val arcPaint2 = Paint().apply {
+    private val arcPaint2 = Paint().apply {
         style = Paint.Style.STROKE
         strokeWidth = 5f
         color = Color.GREEN
     }
 
-    val rect1 = RectF(100f, 100f, 200f, 200f)
-    val path1 = Path().apply {
+    private val rect1 = RectF(100f, 100f, 200f, 200f)
+    private val path1 = Path().apply {
         //指定角度
         arcTo(rect1, 0f, 90f)
     }
 
-    val rect2 = RectF(300f, 100f, 400f, 200f)
-    val path2 = Path().apply {
+    private val rect2 = RectF(300f, 100f, 400f, 200f)
+    private val path2 = Path().apply {
         //指定角度
         arcTo(rect2, 0f, 90f)
     }
