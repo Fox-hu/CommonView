@@ -16,5 +16,6 @@ class PracticeListActivity : BaseListActivity() {
         activityMap["DirectionDemo"] = DirectionDemoActivity::class.java
         activityMap["ScrollerDemo"] = ScrollerDemoActivity::class.java
         activityMap["DragHelperDemo"] = DragDemoActivity::class.java
+        activityMap["QQSlideDemo"] = SlideQQActivity::class.java
     }
 }

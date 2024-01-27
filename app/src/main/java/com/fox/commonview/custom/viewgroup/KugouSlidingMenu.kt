@@ -19,7 +19,7 @@ import com.fox.commonview.viewext.getScreenWidth
  * @Author fox
  * @Date 2020/3/14 13:22
  */
-class QQSlidingMenu @JvmOverloads constructor(
+class KugouSlidingMenu @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : HorizontalScrollView(context, attrs, defStyleAttr) {
 

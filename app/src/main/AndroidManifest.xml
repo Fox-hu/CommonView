@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CommonView" >
         <activity
+            android:name=".practice.SlideQQActivity"
+            android:exported="false" />
+        <activity
             android:name=".practice.DragDemoActivity"
             android:exported="false" />
         <activity
